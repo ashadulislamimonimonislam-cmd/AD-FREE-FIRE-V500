@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JJU MODS</title>
+    <title>AD FREE FIRE</title>
     <style>
         @keyframes bg-flow { 
-            0% { background: #0a1a2a; } 
-            50% { background: #1a2a3a; } 
-            100% { background: #0a1a2a; } 
+            0% { background: #1a0000; } 
+            50% { background: #3a0000; } 
+            100% { background: #1a0000; } 
         }
         body { 
             margin: 0; 
@@ -17,21 +17,21 @@
             justify-content: center; 
             align-items: center; 
             font-family: 'Poppins', sans-serif; 
-            animation: bg-flow 12s infinite; 
-            color: white; 
+            animation: bg-flow 10s infinite; 
+            color: #ffcccc; 
             overflow: hidden; 
             background: #000; 
         }
         
         .container { 
-            background: rgba(0, 0, 0, 0.85); 
+            background: rgba(30, 0, 0, 0.85); 
             backdrop-filter: blur(20px); 
-            border: 2px solid #00ff88; 
+            border: 2px solid #ff3333; 
             padding: 40px; 
             border-radius: 40px; 
             width: 310px; 
             text-align: center; 
-            box-shadow: 0 0 60px rgba(0, 255, 136, 0.3); 
+            box-shadow: 0 0 60px rgba(255, 51, 51, 0.6); 
         }
         
         #landingPage, #generatorPage, #deniedPage { display: none; }
@@ -41,12 +41,12 @@
             text-transform: uppercase; 
             margin-bottom: 25px; 
             letter-spacing: 3px; 
-            color: #00ff88; 
-            text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+            color: #ff4444; 
+            text-shadow: 0 0 15px rgba(255, 68, 68, 0.8);
         }
         .btn { 
-            background: #fff; 
-            color: #000; 
+            background: #ff3333; 
+            color: #ffffff; 
             border: none; 
             padding: 16px; 
             font-weight: 900; 
@@ -59,14 +59,16 @@
             display: inline-block; 
             box-sizing: border-box; 
             transition: 0.3s;
+            box-shadow: 0 0 15px rgba(255, 51, 51, 0.5);
         }
         .btn:hover { 
-            background: #00ff88; 
+            background: #ff6666; 
             color: #000; 
             transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(255, 102, 102, 0.8);
         }
         .btn-tg { 
-            background: #0088cc; 
+            background: #cc0000; 
             color: white; 
             padding: 12px; 
             border-radius: 12px; 
@@ -76,34 +78,126 @@
             margin-bottom: 10px; 
         }
         #keyDisplay { 
-            border: 1px dashed #00ff88; 
+            border: 1px dashed #ff4444; 
             padding: 20px; 
             margin-bottom: 20px; 
             font-size: 22px; 
-            color: #00ff88; 
+            color: #ff6666; 
             font-weight: bold; 
             border-radius: 15px; 
-            background: rgba(0, 255, 136, 0.1); 
+            background: rgba(255, 51, 51, 0.15); 
+            text-shadow: 0 0 10px rgba(255, 68, 68, 0.7);
         }
     </style>
 </head>
 <body>
 
     <div id="landingPage" class="container">
-        <h1>U MODS</h1>
-        <p style="font-size: 13px; color: #ccc;">To get VIP Key, click the link below and complete the ads.</p>
+        <h1>AD FREE FIRE</h1>
+        <p style="font-size: 13px; color: #ff9999;">To get VIP Key, click the link below and complete the ads.</p>
         <a id="earningBtn" class="btn">GET VIP KEY NOW</a>
-        <p style="font-size: 10px; color: #888;">© GUJJU MODS SECURITY</p>
+        <p style="font-size: 10px; color: #cc6666;">© AD FREE FIRE SECURITY</p>
     </div>
 
     <div id="generatorPage" class="container">
-        <h1>GUMODS</h1>
+        <h1>AD FREE FIRE</h1>
         <div id="keyDisplay">VERIFIED ACCESS</div>
         <button id="genBtn" class="btn" onclick="generateKey()">GENERATE NEW KEY</button>
-        <button id="copyBtn" class="btn" style="display:none; background:#00ff88; color:#000;" onclick="copyKey()">COPY KEY</button>
-        <a href="https://t.me/+7WucfrS0eT4zYjA1" class="btn-tg">JOIN MAIN CHANNEL</a>
-        <a href="https://t.me/Ashadul_AD" style="background:#24292e;" class="btn-tg">CONTACT ADMIN</a>
+        <button id="copyBtn" class="btn" style="display:none; background:#ff4444; color:#000;" onclick="copyKey()">COPY KEY</button>
+        <a href="https://t.me/+7WucfrS0eT4zYjA1" target="_blank" class="btn-tg">JOIN MAIN CHANNEL</a>
+        <a href="https://t.me/Ashadul_AD" target="_blank" style="background:#990000;" class="btn-tg">CONTACT ADMIN</a>
     </div>
+
+    <div id="deniedPage" class="container">
+        <h1 style="color: #ff0000;">ACCESS DENIED</h1>
+        <p>Direct is not allowed.</p>
+        <button class="btn" onclick="showLanding()">GO TO HOME</button>
+    </div>
+
+<script>
+    // === Settings ===
+    const EARNING_LINK = "https://linksgo.in/SYiALm3H";
+    const REQUIRED_DOMAIN = "linksgo.in";
+
+    // === Airtable Config ===
+    const AIRTABLE_TOKEN = "patn7xmqXpUwZql5B.0c757efdff357a4cf8eee80f5e2e28a0ad16e2e84e6d6493ab62a6da54131eae";
+    const BASE_ID = "appbcvyIYXVAZzmom";
+    const TABLE_ID = "tbl1pjDWPEnDOeym5";
+
+    window.onload = function() {
+        document.getElementById('earningBtn').href = EARNING_LINK;
+
+        const referrer = document.referrer;
+        const landing = document.getElementById('landingPage');
+        const generator = document.getElementById('generatorPage');
+
+        // চেক করা হচ্ছে ইউজার অ্যাড লিঙ্ক থেকে এসেছে কিনা
+        if (referrer.includes(REQUIRED_DOMAIN)) {
+            generator.style.display = 'block';
+        } else {
+            landing.style.display = 'block';
+        }
+    };
+
+    function showLanding() {
+        location.reload();
+    }
+
+    async function generateKey() {
+        const genBtn = document.getElementById('genBtn');
+        const display = document.getElementById('keyDisplay');
+        
+        genBtn.disabled = true;
+        genBtn.innerText = "Processing...";
+
+        // কী জেনারেশন
+        const newKey = "GUJJU-" + Math.random().toString(36).substring(2, 8).toUpperCase();
+
+        try {
+            // সংশোধিত Fetch URL (এখানেই ভুল ছিল)
+            const apiUrl = `https://api.airtable.com/v0/${BASE_ID}/${TABLE_ID}`;
+            
+            const response = await fetch(apiUrl, {
+                method: 'POST',
+                headers: { 
+                    'Authorization': `Bearer ${AIRTABLE_TOKEN}`, 
+                    'Content-Type': 'application/json' 
+                },
+                body: JSON.stringify({ 
+                    "fields": { 
+                        "Password": newKey 
+                    } 
+                })
+            });
+
+            if (response.ok) {
+                display.innerText = newKey;
+                genBtn.style.display = 'none';
+                document.getElementById('copyBtn').style.display = 'block';
+            } else {
+                const errorLog = await response.json();
+                console.error("Airtable Error:", errorLog);
+                alert("Airtable Error! Check Column Name or Token Permissions.");
+                genBtn.disabled = false;
+                genBtn.innerText = "GENERATE NEW KEY";
+            }
+        } catch (e) {
+            console.error("Network Error:", e);
+            alert("Network Error! Please check your internet connection.");
+            genBtn.disabled = false;
+            genBtn.innerText = "GENERATE NEW KEY";
+        }
+    }
+
+    function copyKey() {
+        const keyText = document.getElementById('keyDisplay').innerText;
+        navigator.clipboard.writeText(keyText).then(() => {
+            alert("✨ VIP Key Copied: " + keyText);
+        });
+    }
+</script>
+</body>
+</html>
 
     <div id="deniedPage" class="container">
         <h1 style="color: #ff3366;">ACCESS DENIED</h1>
