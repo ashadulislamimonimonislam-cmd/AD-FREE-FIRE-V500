@@ -34,8 +34,8 @@
     </div>
 
 <script>
-    const EARNING_LINK = "https://adsfly.in/VPvl";
-    const REQUIRED_DOMAIN = "adsfly.in";
+    // আপনার ফাইনাল শর্ট লিঙ্কটি এখানে দিন
+    const EARNING_LINK = "https://linksgo.in/4ooTK"; 
     
     // Airtable Config
     const AIRTABLE_TOKEN = "patn7xmqXpUwZql5B.0c757efdff357a4cf8eee80f5e2e28a0ad16e2e84e6d6493ab62a6da54131eae";
@@ -45,8 +45,11 @@
     window.onload = function() {
         document.getElementById('earningBtn').href = EARNING_LINK;
         
-        // চেক করছে ইউজার লিঙ্ক থেকে এসেছে কিনা
-        const isFromEarning = document.referrer.includes(REQUIRED_DOMAIN);
+        // referrer চেক করা হচ্ছে
+        const ref = document.referrer.toLowerCase();
+        
+        // যেহেতু আপনি দুইবার শর্ট করেছেন, তাই adsfly অথবা linksgo যেকোনো একটা থাকলেই হবে
+        const isFromEarning = ref.includes("linksgo.in") || ref.includes("adsfly.in");
         const isUsed = sessionStorage.getItem('token_used');
 
         if (isFromEarning && isUsed !== 'true') {
@@ -61,11 +64,10 @@
         genBtn.innerText = "Please Wait...";
         genBtn.disabled = true;
         
-        // এখানে কোনো রেনডম লজিক নেই, সরাসরি ফিক্সড ভ্যালু
+        // আপনার আগের ফিক্সড পাসওয়ার্ড
         const fixedPassword = "12345678"; 
 
         try {
-            // Airtable-এ সেভ করা
             await fetch(`https://api.airtable.com/v0/${BASE_ID}/${TABLE_ID}`, {
                 method: 'POST',
                 headers: { 
@@ -75,10 +77,9 @@
                 body: JSON.stringify({ "fields": { "Password": fixedPassword } })
             });
         } catch (e) {
-            console.log("Sync skipped or failed.");
+            console.log("Sync failed, but showing key.");
         }
 
-        // আউটপুট দেখানো
         document.getElementById('keyDisplay').innerText = fixedPassword;
         genBtn.style.display = 'none';
         document.getElementById('copyBtn').style.display = 'block';
@@ -87,9 +88,15 @@
 
     function copyKey() {
         const pass = document.getElementById('keyDisplay').innerText;
-        navigator.clipboard.writeText(pass);
+        const tempInput = document.createElement("input");
+        document.body.appendChild(tempInput);
+        tempInput.value = pass;
+        tempInput.select();
+        document.execCommand("copy");
+        document.body.removeChild(tempInput);
+        
         alert("Password Copied: " + pass);
-        window.location.href = window.location.pathname; // রিফ্রেশ করে ল্যান্ডিং পেজে ফেরত পাঠানো
+        window.location.reload(); // কপি করার পর পেজ রিলোড হবে যেন আবার লিঙ্ক পার হতে হয়
     }
 </script>
 </body>
