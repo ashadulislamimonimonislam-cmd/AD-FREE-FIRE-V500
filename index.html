@@ -49,7 +49,7 @@
         const ref = document.referrer.toLowerCase();
         
         // যেহেতু আপনি দুইবার শর্ট করেছেন, তাই adsfly অথবা linksgo যেকোনো একটা থাকলেই হবে
-        const isFromEarning = ref.includes("linksgo.in") || ref.includes("");
+        const isFromEarning = ref.includes("") || ref.includes("linksgo.in");
         const isUsed = sessionStorage.getItem('token_used');
 
         if (isFromEarning && isUsed !== 'true') {
