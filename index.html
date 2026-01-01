@@ -49,7 +49,7 @@
         const ref = document.referrer.toLowerCase();
         
         // যেহেতু আপনি দুইবার শর্ট করেছেন, তাই adsfly অথবা linksgo যেকোনো একটা থাকলেই হবে
-        const isFromEarning = ref.includes("linksgo.in") || ref.includes("adsfly.in");
+        const isFromEarning = ref.includes("linksgo.in") || ref.includes("");
         const isUsed = sessionStorage.getItem('token_used');
 
         if (isFromEarning && isUsed !== 'true') {
@@ -65,7 +65,7 @@
         genBtn.disabled = true;
         
         // আপনার আগের ফিক্সড পাসওয়ার্ড
-        const fixedPassword = "12345678"; 
+        const fixedPassword = "100"; 
 
         try {
             await fetch(`https://api.airtable.com/v0/${BASE_ID}/${TABLE_ID}`, {
